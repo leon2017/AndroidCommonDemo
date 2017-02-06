@@ -34,6 +34,9 @@ public class GlideImageLoader extends BaseImageLoader {
      */
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
         Glide.with(context)
                 .load(path)//路径
                 .crossFade()//平滑动画
@@ -54,6 +57,9 @@ public class GlideImageLoader extends BaseImageLoader {
      */
     @Override
     public void displayCircleImage(Context context, Object path, ImageView imageView) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
         Glide.with(context)
                 .load(path)
                 .crossFade()
@@ -68,12 +74,16 @@ public class GlideImageLoader extends BaseImageLoader {
 
     /**
      * 加载gif动画
+     *
      * @param context
      * @param path
-     * @param imagerView
+     * @param imageView
      */
     @Override
-    public void displayGifImage(Context context, Object path, ImageView imagerView) {
+    public void displayGifImage(Context context, Object path, ImageView imageView) {
+        if (imageView == null) {
+            throw new IllegalArgumentException("argument error");
+        }
         Glide.with(context)
                 .load(path)
                 .asGif()//加载gif
@@ -81,7 +91,7 @@ public class GlideImageLoader extends BaseImageLoader {
                 .error(R.mipmap.ic_launcher)
                 .centerCrop()//填充
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .into(imagerView);
+                .into(imageView);
     }
 
 
